@@ -2607,7 +2607,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["vehicles", "users"],
@@ -40717,7 +40716,9 @@ var render = function() {
                   _c("td", [_vm._v(_vm._s(vehicle.license_plate))]),
                   _vm._v(" "),
                   _c("td", [
-                    _vm._v(_vm._s(vehicle.user.name) + "\n\t\t\t\t\t\t")
+                    vehicle.user != null
+                      ? _c("span", [_vm._v(_vm._s(vehicle.user.name))])
+                      : _c("span", [_vm._v("Sin Conductor")])
                   ]),
                   _vm._v(" "),
                   _c("td", [

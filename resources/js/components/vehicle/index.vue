@@ -21,10 +21,9 @@
 						<td>{{ vehicle.year }}</td>
 						<td>{{ vehicle.vehicle_color }}</td>
 						<td>{{ vehicle.license_plate }}</td>
-						<td>{{ vehicle.user.name }}
-							<!-- <span v-for="(user, index) in vehicle.user" :key="index">
-								<div>{{user.name}}</div>
-							</span> -->
+						<td>
+							<span v-if="vehicle.user != null">{{ vehicle.user.name }}</span>
+							<span v-else>Sin Conductor</span>
 						</td>
 						<td>
 							<div class="actions">
