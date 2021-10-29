@@ -26,8 +26,9 @@ class TripController extends Controller
             $persons = User::get();
             return view('driver.index', compact('trips', 'vehicles', 'persons'));
         } else {
-            $trips = Trip::where('driver', '=', auth()->user()->id)->get();
+            // $trips = Trip::with('user')->get();
             // dd($trips);
+            $trips = Trip::where('driver', '=', auth()->user()->id)->get();
             $vehicles = Vehicle::where('driver', '=', auth()->user()->id)->get();
             $persons = User::where('id', '=', auth()->user()->id)->get();
             return view('driver.index', compact('trips', 'vehicles', 'persons'));

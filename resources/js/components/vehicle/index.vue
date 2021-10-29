@@ -41,6 +41,8 @@
 
 <script>
 	import Form from "./Form";
+	import datatables from "datatables";
+
 	export default {
 		props: ["vehicles", "users"],
 		components: {
@@ -53,9 +55,14 @@
 			};
 		},
 		mounted() {
-			// $("#table").DataTable();
+			this.mytable();
 		},
 		methods: {
+			mytable() {
+				$(document).ready(function () {
+					$("#table").DataTable();
+				});
+			},
 			addVehicle() {
 				this.type = "created";
 				$("#modalEditUser").modal({

@@ -32,7 +32,7 @@ Route::get('/test', function () {
     // ]);
     // $user->assignRole('admin');
 
-    //entrar con el id del primer usuario
+    // entrar con el id del primer usuario
     \Auth::login(User::find(1));
     return redirect('/');
 });
@@ -55,6 +55,11 @@ Route::group(['prefix' => 'trip'], function () {
     Route::post('/store', 'TripController@store');
     Route::post('/update/{trip}', 'TripController@update');
     Route::post('/delete/{id}', 'TripController@destroy');
+});
+
+Route::group(['prefix' => 'employeeLiquidation'], function () {
+    Route::get('/', 'employeeLiquidationController@employeeLiquidation')->name('employeeLiquidation');
+    Route::get('/bringUserByDocumentNumber/{identification_card}', 'employeeLiquidationController@bringUserByDocumentNumber');
 });
 
 Route::group(['prefix' => 'vehicle', 'middleware' => ['role:admin']], function () {

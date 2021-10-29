@@ -40,7 +40,7 @@
 						<td>{{ trip.other }}</td>
 						<td>
 							<span v-if="trip.money_advance > trip.feeding + trip.Toll + trip.fuel + trip.other">
-								{{ trip.feeding + trip.Toll + trip.fuel + trip.other }}
+								{{ trip.money_advance - (trip.feeding + trip.Toll + trip.fuel + trip.other) }}
 							</span>
 							<span v-else>
 								No Debe A La Empresa
@@ -48,7 +48,7 @@
 						</td>
 						<td>
 							<span v-if="trip.money_advance < trip.feeding + trip.Toll + trip.fuel + trip.other">
-								{{ trip.feeding + trip.Toll + trip.fuel + trip.other }}
+								{{ trip.feeding + trip.Toll + trip.fuel + trip.other - (trip.money_advance) }}
 							</span>
 							<span v-else>
 								No Debe Al Conductor
@@ -70,6 +70,8 @@
 
 <script>
 	import Form from "./Form";
+	import datatables from "datatables";
+
 	export default {
 		props: ["trips", "vehicles", "persons"],
 		components: {
@@ -82,11 +84,14 @@
 			};
 		},
 		mounted() {
-			$(document).ready(function () {
-				$("#table").DataTable();
-			});
+			this.mytable();
 		},
 		methods: {
+			mytable() {
+				$(document).ready(function () {
+					$("#table").DataTable();
+				});
+			},
 			addTrip() {
 				this.type = "created";
 				$("#modalEditUser").modal({

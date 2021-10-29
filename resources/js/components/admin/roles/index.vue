@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<div class="my-4 text-right">
-			<button class="btn btn-primary" @click="addUser">Add User</button>
+			<button class="btn btn-primary" @click="addUser">Agregar Usuario</button>
 		</div>
 		<div class="table-responsive">
 			<table id="table" class="table table-bordered table-hover table-wrap table-sm">
@@ -35,6 +35,8 @@
 
 <script>
 	import Form from "./Form";
+	import datatables from "datatables";
+
 	export default {
 		props: ["users", "roles"],
 		components: {
@@ -47,9 +49,14 @@
 			};
 		},
 		mounted() {
-			// $("#table").DataTable();
+			this.mytable();
 		},
 		methods: {
+			mytable() {
+				$(document).ready(function () {
+					$("#table").DataTable();
+				});
+			},
 			addUser() {
 				this.type = "created";
 				$("#modalEditUser").modal({

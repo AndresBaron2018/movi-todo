@@ -1,20 +1,16 @@
 {{-- @php
-    dd($trips);
+    dd($users);
 @endphp --}}
 @extends('layouts.app')
 
 @section('content')
     <div class="container">
-            <a class="btn btn-primary" data-bs-toggle="offcanvas" href="/employeeLiquidation" role="button"
-                            aria-controls="offcanvasExample">
-                            Liquidación de empleados
-            </a>
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">App de Viajes</div>
+                    <div class="card-header">Liquidación semanal</div>
                     <div class="card-body">
-                        <driver-index :trips="{{ $trips }}" :vehicles="{{ $vehicles }}" :persons="{{ $persons }}"/>
+                        <employee-liquidation />
                     </div>
                 </div>
             </div>

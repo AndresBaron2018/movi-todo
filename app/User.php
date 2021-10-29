@@ -66,7 +66,7 @@ class User extends Authenticatable
 
     public function trip()
     {
-        return $this->hasMany(Trip::class, 'id');
+        return $this->hasMany(Trip::class, 'driver');
     }
 
     public function Vehicle()
@@ -84,5 +84,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Vehicle', 'user_trip_vehicle')
             ->withPivot('trip_id', 'status');
+    }
+
+    public static function findByIdNumber($identification_card)
+    {
+        return self::whereHas('users', function ($query) use ($identification_card) {
+            $query->where($identification_card);
+        })->first();
     }
 }

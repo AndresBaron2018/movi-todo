@@ -25,6 +25,10 @@ class MoviTodoController extends Controller
             }
         }
 
+        $roles = Role::get();
+        $users = User::has('roles')->with('roles')->get();
+        return view('admin.index', compact('users', 'roles'));
+
         // if ($role == 'admin') {
         //     $roles = Role::get();
         //     $users = User::has('roles')->with('roles')->get();
@@ -35,9 +39,6 @@ class MoviTodoController extends Controller
         //     return view('admin.index', compact('users', 'roles'));
         // }
 
-        $roles = Role::get();
-        $users = User::has('roles')->with('roles')->get();
-        return view('admin.index', compact('users', 'roles'));
 
         // $roles = Role::get();
         // $users = User::where('user_id', '=', auth()->user()->id)->has('roles')->with('roles')->get();
