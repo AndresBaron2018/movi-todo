@@ -7,6 +7,10 @@
 
 @section('content')
     <div class="container">
+        <a class="btn btn-primary" data-bs-toggle="offcanvas" href="/employeeLiquidation" role="button"
+                aria-controls="offcanvasExample">
+                Liquidación de empleados
+        </a>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
             <li class="breadcrumb-item active">Admin</li>

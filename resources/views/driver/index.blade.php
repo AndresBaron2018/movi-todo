@@ -5,10 +5,6 @@
 
 @section('content')
     <div class="container">
-            <a class="btn btn-primary" data-bs-toggle="offcanvas" href="/employeeLiquidation" role="button"
-                            aria-controls="offcanvasExample">
-                            Liquidación de empleados
-            </a>
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
