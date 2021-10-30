@@ -2124,6 +2124,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -55535,6 +55537,8 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(user.email))]),
                   _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(user.identification_card))]),
+                  _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(user.role_user.join(" - ")) + " ")]),
                   _vm._v(" "),
                   _c("td", [
@@ -55594,6 +55598,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Name")]),
         _vm._v(" "),
         _c("th", [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Numero de cedula")]),
         _vm._v(" "),
         _c("th", [_vm._v("Role")]),
         _vm._v(" "),

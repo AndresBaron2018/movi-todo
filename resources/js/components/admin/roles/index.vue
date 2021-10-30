@@ -9,6 +9,7 @@
 					<tr>
 						<th>Name</th>
 						<th>Email</th>
+						<th>Numero de cedula</th>
 						<th>Role</th>
 						<th>Actions</th>
 					</tr>
@@ -17,6 +18,7 @@
 					<tr v-for="(user, index) in users" :key="index">
 						<td>{{ user.name }}</td>
 						<td>{{ user.email }}</td>
+						<td>{{ user.identification_card }}</td>
 						<td>{{ user.role_user.join(' - ')}} </td>
 						<td>
 							<div class="actions">
