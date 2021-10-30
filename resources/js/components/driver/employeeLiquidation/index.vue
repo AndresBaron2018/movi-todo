@@ -20,6 +20,22 @@
 				<button class="btn btn-primary" type="submit" v-on:click="bringUserByDocumentNumber()">Buscar al usuario</button>
 			</div>
 			<div class="col-md-6">
+				<label class="font__helvetica--light title_label">Gasto total en alimentación</label>
+				<input type="email" name="email" class="form-control" placeholder="total_feeding" v-model="this.total_feeding" required>
+			</div>
+			<div class="col-md-6">
+				<label class="font__helvetica--light title_label">Gasto total en peajes</label>
+				<input type="email" name="email" class="form-control" placeholder="total_toll" v-model="this.total_toll" required>
+			</div>
+			<div class="col-md-6">
+				<label class="font__helvetica--light title_label">Gasto total en combustible</label>
+				<input type="email" name="email" class="form-control" placeholder="total_fuel" v-model="this.total_fuel" required>
+			</div>
+			<div class="col-md-6">
+				<label class="font__helvetica--light title_label">Otros gastos</label>
+				<input type="email" name="email" class="form-control" placeholder="total_other" v-model="this.total_other" required>
+			</div>
+			<div class="col-md-6">
 				<label class="font__helvetica--light title_label">Total adelanto de dinero</label>
 				<input type="email" name="email" class="form-control" placeholder="total_money_advance" v-model="this.total_money_advance" required>
 			</div>
@@ -43,16 +59,19 @@
 	export default {
 		data() {
 			return {
-				wanted: false,
+				date: Date(),
 				minimum_date: "",
 				maximum_date: "",
 				id: "",
 				users: "",
 				person: [],
+				total_feeding: null,
+				total_toll: null,
+				total_fuel: null,
+				total_other: null,
 				total_money_advance: null,
 				total_expenses: null,
 				liquidation: null,
-				date: Date(),
 				owes_the_company: null,
 				owes_the_employee: null,
 			};
@@ -84,6 +103,15 @@
 					item.trip.forEach((travel) => {
 						// conditional of date
 						if (travel.created_at >= this.minimum_date) {
+							// Total
+							this.total_feeding = this.total_feeding + travel.feeding;
+							// Total
+							this.total_toll = this.total_toll + travel.Toll;
+							// Total
+							this.total_fuel = this.total_fuel + travel.fuel;
+							// Total
+							this.total_other = this.total_other + travel.other;
+
 							// Total money advance
 							this.total_money_advance =
 								this.total_money_advance + travel.money_advance;
@@ -99,15 +127,13 @@
 					});
 				});
 				if (this.total_money_advance > this.total_expenses) {
-					this.owes_the_employee = this.total_money_advance - this.total_expenses;
-				} else {
 					this.owes_the_company = this.total_money_advance - this.total_expenses;
+				} else {
+					this.owes_the_employee = this.total_expenses - this.total_money_advance;
 				}
 				console.log(this.total_money_advance);
 				console.log(this.total_expenses);
 				console.log(this.liquidation);
-
-				this.wanted = true;
 			},
 		},
 	};

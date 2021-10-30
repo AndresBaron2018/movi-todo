@@ -2361,19 +2361,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      wanted: false,
+      date: Date(),
       minimum_date: "",
       maximum_date: "",
       id: "",
       users: "",
       person: [],
+      total_feeding: null,
+      total_toll: null,
+      total_fuel: null,
+      total_other: null,
       total_money_advance: null,
       total_expenses: null,
       liquidation: null,
-      date: Date(),
       owes_the_company: null,
       owes_the_employee: null
     };
@@ -2405,7 +2424,15 @@ __webpack_require__.r(__webpack_exports__);
         item.trip.forEach(function (travel) {
           // conditional of date
           if (travel.created_at >= _this2.minimum_date) {
-            // Total money advance
+            // Total
+            _this2.total_feeding = _this2.total_feeding + travel.feeding; // Total
+
+            _this2.total_toll = _this2.total_toll + travel.Toll; // Total
+
+            _this2.total_fuel = _this2.total_fuel + travel.fuel; // Total
+
+            _this2.total_other = _this2.total_other + travel.other; // Total money advance
+
             _this2.total_money_advance = _this2.total_money_advance + travel.money_advance; // total expenses
 
             _this2.total_expenses = _this2.total_expenses + travel.feeding + travel.Toll + travel.fuel + travel.other;
@@ -2414,15 +2441,14 @@ __webpack_require__.r(__webpack_exports__);
       });
 
       if (this.total_money_advance > this.total_expenses) {
-        this.owes_the_employee = this.total_money_advance - this.total_expenses;
-      } else {
         this.owes_the_company = this.total_money_advance - this.total_expenses;
+      } else {
+        this.owes_the_employee = this.total_expenses - this.total_money_advance;
       }
 
       console.log(this.total_money_advance);
       console.log(this.total_expenses);
       console.log(this.liquidation);
-      this.wanted = true;
     }
   }
 });
@@ -56169,6 +56195,138 @@ var render = function() {
           },
           [_vm._v("Buscar al usuario")]
         )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("label", { staticClass: "font__helvetica--light title_label" }, [
+          _vm._v("Gasto total en alimentación")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: this.total_feeding,
+              expression: "this.total_feeding"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "email",
+            name: "email",
+            placeholder: "total_feeding",
+            required: ""
+          },
+          domProps: { value: this.total_feeding },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(this, "total_feeding", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("label", { staticClass: "font__helvetica--light title_label" }, [
+          _vm._v("Gasto total en peajes")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: this.total_toll,
+              expression: "this.total_toll"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "email",
+            name: "email",
+            placeholder: "total_toll",
+            required: ""
+          },
+          domProps: { value: this.total_toll },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(this, "total_toll", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("label", { staticClass: "font__helvetica--light title_label" }, [
+          _vm._v("Gasto total en combustible")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: this.total_fuel,
+              expression: "this.total_fuel"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "email",
+            name: "email",
+            placeholder: "total_fuel",
+            required: ""
+          },
+          domProps: { value: this.total_fuel },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(this, "total_fuel", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("label", { staticClass: "font__helvetica--light title_label" }, [
+          _vm._v("Otros gastos")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: this.total_other,
+              expression: "this.total_other"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "email",
+            name: "email",
+            placeholder: "total_other",
+            required: ""
+          },
+          domProps: { value: this.total_other },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(this, "total_other", $event.target.value)
+            }
+          }
+        })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-6" }, [
