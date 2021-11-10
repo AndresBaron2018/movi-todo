@@ -18,7 +18,7 @@ use Spatie\Permission\Models\Role;
 
 Route::get('/test', function () {
     // Ejecute para crear un role admin
-    // $role = Role::create(['name' => 'admin']);
+    // $role = Role::create(['name' => 'driver']);
 
 
     // ejecute para crear un usuario con role admin
@@ -42,7 +42,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'moviTodo', 'middleware' => ['role:admin']], function () {
+Route::group(['prefix' => 'moviTodo'], function () {
     Route::get('/', 'MoviTodoController@index')->name('moviTodo');
     Route::post('/store', 'MoviTodoController@store');
     Route::post('/update/{user}', 'MoviTodoController@update');

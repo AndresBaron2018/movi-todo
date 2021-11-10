@@ -2392,7 +2392,6 @@ __webpack_require__.r(__webpack_exports__);
       total_other: null,
       total_money_advance: null,
       total_expenses: null,
-      liquidation: null,
       owes_the_company: null,
       owes_the_employee: null
     };
@@ -2415,7 +2414,6 @@ __webpack_require__.r(__webpack_exports__);
     limitedDate: function limitedDate() {
       this.maximum_date = new Date();
       this.minimum_date = this.maximum_date.getFullYear() + "-" + (this.maximum_date.getMonth() + 1) + "-" + (this.maximum_date.getDate() - 7);
-      console.log(this.minimum_date);
     },
     employeeLiquidation: function employeeLiquidation() {
       var _this2 = this;
@@ -2423,7 +2421,7 @@ __webpack_require__.r(__webpack_exports__);
       this.person.forEach(function (item) {
         item.trip.forEach(function (travel) {
           // conditional of date
-          if (travel.created_at >= _this2.minimum_date) {
+          if (Date(travel.created_at) >= Date(_this2.minimum_date)) {
             // Total
             _this2.total_feeding = _this2.total_feeding + travel.feeding; // Total
 
@@ -2448,7 +2446,6 @@ __webpack_require__.r(__webpack_exports__);
 
       console.log(this.total_money_advance);
       console.log(this.total_expenses);
-      console.log(this.liquidation);
     }
   }
 });

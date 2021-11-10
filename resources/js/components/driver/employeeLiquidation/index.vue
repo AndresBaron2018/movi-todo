@@ -71,7 +71,6 @@
 				total_other: null,
 				total_money_advance: null,
 				total_expenses: null,
-				liquidation: null,
 				owes_the_company: null,
 				owes_the_employee: null,
 			};
@@ -96,13 +95,12 @@
 					(this.maximum_date.getMonth() + 1) +
 					"-" +
 					(this.maximum_date.getDate() - 7);
-				console.log(this.minimum_date);
 			},
 			employeeLiquidation() {
 				this.person.forEach((item) => {
 					item.trip.forEach((travel) => {
 						// conditional of date
-						if (travel.created_at >= this.minimum_date) {
+						if (Date(travel.created_at) >= Date(this.minimum_date)) {
 							// Total
 							this.total_feeding = this.total_feeding + travel.feeding;
 							// Total
@@ -133,7 +131,6 @@
 				}
 				console.log(this.total_money_advance);
 				console.log(this.total_expenses);
-				console.log(this.liquidation);
 			},
 		},
 	};
